@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  VSCinema
+
+  Created by Mac mini on 2016/11/17.
+  Copyright © 2016年 Mac mini. All rights reserved.
+*/
+"Back" = "返回";
+"Select theater" = "選擇戲院";
+"Theater Info" = "戲院資訊";
+"Movie Info" = "電影資訊";
+"Order" = "訂票";

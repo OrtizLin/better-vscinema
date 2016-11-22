@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A549F511DDD929D00AE3C84 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A549F531DDD929D00AE3C84 /* Localizable.strings */; };
+		9A549F5D1DDD99FE00AE3C84 /* TheaterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A549F5C1DDD99FE00AE3C84 /* TheaterDetailViewController.m */; };
 		9A69DA221DDC2EDA000458F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69DA211DDC2EDA000458F6 /* main.m */; };
 		9A69DA251DDC2EDA000458F6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69DA241DDC2EDA000458F6 /* AppDelegate.m */; };
 		9A69DA281DDC2EDA000458F6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69DA271DDC2EDA000458F6 /* ViewController.m */; };
@@ -15,6 +17,11 @@
 		9A69DA301DDC2EDA000458F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A69DA2E1DDC2EDA000458F6 /* LaunchScreen.storyboard */; };
 		9A69DA3B1DDC2EDA000458F6 /* VSCinemaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69DA3A1DDC2EDA000458F6 /* VSCinemaTests.m */; };
 		9A69DA461DDC2EDA000458F6 /* VSCinemaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69DA451DDC2EDA000458F6 /* VSCinemaUITests.m */; };
+		9A69DA5B1DDC3FAF000458F6 /* TheaterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A69DA5A1DDC3FAF000458F6 /* TheaterListViewController.m */; };
+		9A69DA5D1DDC42BB000458F6 /* conference.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A69DA5C1DDC42BB000458F6 /* conference.png */; };
+		9AA6ABD11DE29D2D00D68219 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6ABD01DE29D2D00D68219 /* MovieViewController.m */; };
+		9AA6ABD41DE2A84600D68219 /* MovieListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6ABD31DE2A84600D68219 /* MovieListViewController.m */; };
+		9AA6ABD71DE2D66600D68219 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA6ABD61DE2D66600D68219 /* MovieDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A549F4B1DDD927700AE3C84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		9A549F4C1DDD927700AE3C84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9A549F4D1DDD928100AE3C84 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		9A549F4E1DDD928100AE3C84 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		9A549F521DDD929D00AE3C84 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9A549F541DDD929F00AE3C84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9A549F5B1DDD99FE00AE3C84 /* TheaterDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheaterDetailViewController.h; sourceTree = "<group>"; };
+		9A549F5C1DDD99FE00AE3C84 /* TheaterDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheaterDetailViewController.m; sourceTree = "<group>"; };
 		9A69DA1D1DDC2EDA000458F6 /* VSCinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VSCinema.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A69DA211DDC2EDA000458F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A69DA231DDC2EDA000458F6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +66,15 @@
 		9A69DA411DDC2EDA000458F6 /* VSCinemaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VSCinemaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A69DA451DDC2EDA000458F6 /* VSCinemaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSCinemaUITests.m; sourceTree = "<group>"; };
 		9A69DA471DDC2EDA000458F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A69DA591DDC3FAF000458F6 /* TheaterListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheaterListViewController.h; sourceTree = "<group>"; };
+		9A69DA5A1DDC3FAF000458F6 /* TheaterListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheaterListViewController.m; sourceTree = "<group>"; };
+		9A69DA5C1DDC42BB000458F6 /* conference.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conference.png; sourceTree = "<group>"; };
+		9AA6ABCF1DE29D2D00D68219 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
+		9AA6ABD01DE29D2D00D68219 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
+		9AA6ABD21DE2A84600D68219 /* MovieListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieListViewController.h; sourceTree = "<group>"; };
+		9AA6ABD31DE2A84600D68219 /* MovieListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieListViewController.m; sourceTree = "<group>"; };
+		9AA6ABD51DE2D66600D68219 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
+		9AA6ABD61DE2D66600D68219 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +129,22 @@
 				9A69DA241DDC2EDA000458F6 /* AppDelegate.m */,
 				9A69DA261DDC2EDA000458F6 /* ViewController.h */,
 				9A69DA271DDC2EDA000458F6 /* ViewController.m */,
+				9AA6ABCF1DE29D2D00D68219 /* MovieViewController.h */,
+				9AA6ABD01DE29D2D00D68219 /* MovieViewController.m */,
+				9AA6ABD21DE2A84600D68219 /* MovieListViewController.h */,
+				9AA6ABD31DE2A84600D68219 /* MovieListViewController.m */,
+				9AA6ABD51DE2D66600D68219 /* MovieDetailViewController.h */,
+				9AA6ABD61DE2D66600D68219 /* MovieDetailViewController.m */,
+				9A69DA591DDC3FAF000458F6 /* TheaterListViewController.h */,
+				9A69DA5A1DDC3FAF000458F6 /* TheaterListViewController.m */,
+				9A549F5B1DDD99FE00AE3C84 /* TheaterDetailViewController.h */,
+				9A549F5C1DDD99FE00AE3C84 /* TheaterDetailViewController.m */,
 				9A69DA291DDC2EDA000458F6 /* Main.storyboard */,
 				9A69DA2C1DDC2EDA000458F6 /* Assets.xcassets */,
 				9A69DA2E1DDC2EDA000458F6 /* LaunchScreen.storyboard */,
 				9A69DA311DDC2EDA000458F6 /* Info.plist */,
+				9A69DA5C1DDC42BB000458F6 /* conference.png */,
+				9A549F531DDD929D00AE3C84 /* Localizable.strings */,
 				9A69DA201DDC2EDA000458F6 /* Supporting Files */,
 			);
 			path = VSCinema;
@@ -223,8 +259,8 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
 			mainGroup = 9A69DA141DDC2EDA000458F6;
 			productRefGroup = 9A69DA1E1DDC2EDA000458F6 /* Products */;
@@ -243,7 +279,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A549F511DDD929D00AE3C84 /* Localizable.strings in Resources */,
 				9A69DA301DDC2EDA000458F6 /* LaunchScreen.storyboard in Resources */,
+				9A69DA5D1DDC42BB000458F6 /* conference.png in Resources */,
 				9A69DA2D1DDC2EDA000458F6 /* Assets.xcassets in Resources */,
 				9A69DA2B1DDC2EDA000458F6 /* Main.storyboard in Resources */,
 			);
@@ -270,9 +308,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA6ABD71DE2D66600D68219 /* MovieDetailViewController.m in Sources */,
 				9A69DA281DDC2EDA000458F6 /* ViewController.m in Sources */,
+				9AA6ABD11DE29D2D00D68219 /* MovieViewController.m in Sources */,
 				9A69DA251DDC2EDA000458F6 /* AppDelegate.m in Sources */,
+				9AA6ABD41DE2A84600D68219 /* MovieListViewController.m in Sources */,
 				9A69DA221DDC2EDA000458F6 /* main.m in Sources */,
+				9A549F5D1DDD99FE00AE3C84 /* TheaterDetailViewController.m in Sources */,
+				9A69DA5B1DDC3FAF000458F6 /* TheaterListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,10 +351,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9A549F531DDD929D00AE3C84 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A549F521DDD929D00AE3C84 /* zh-Hant */,
+				9A549F541DDD929F00AE3C84 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9A69DA291DDC2EDA000458F6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9A69DA2A1DDC2EDA000458F6 /* Base */,
+				9A549F4B1DDD927700AE3C84 /* en */,
+				9A549F4D1DDD928100AE3C84 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -320,6 +374,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				9A69DA2F1DDC2EDA000458F6 /* Base */,
+				9A549F4C1DDD927700AE3C84 /* en */,
+				9A549F4E1DDD928100AE3C84 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -498,6 +554,7 @@
 				9A69DA4C1DDC2EDA000458F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A69DA4D1DDC2EDA000458F6 /* Build configuration list for PBXNativeTarget "VSCinemaTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +563,7 @@
 				9A69DA4F1DDC2EDA000458F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A69DA501DDC2EDA000458F6 /* Build configuration list for PBXNativeTarget "VSCinemaUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +572,7 @@
 				9A69DA521DDC2EDA000458F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

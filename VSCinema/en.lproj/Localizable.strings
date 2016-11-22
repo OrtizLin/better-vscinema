@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  VSCinema
+
+  Created by Mac mini on 2016/11/17.
+  Copyright © 2016年 Mac mini. All rights reserved.
+*/
+"Back" = "Back";
+"Select theater" = "Select theater";
+"Theater Info" = "Theater Info";
+"Movie Info" ="Movie Info" ;
+"Order" ="Order";
