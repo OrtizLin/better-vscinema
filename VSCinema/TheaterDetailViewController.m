@@ -157,7 +157,7 @@
     
     NSString *text =btn.titleLabel.text;
     
-    NSLog(@"tel button click and number is %@",text);
+
     NSString * tel = [text stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     NSString *urlString = [NSString stringWithFormat: @"tel://%@", tel];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
