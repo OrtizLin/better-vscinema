@@ -17,6 +17,7 @@
         NSMutableArray *DayArray;
         NSMutableArray *ShowtimeArray;
         NSMutableArray *timeArray;
+        NSMutableArray *urlArray;
     NSString *MovieID;
     NSString *MovieDate;
 }
@@ -99,6 +100,7 @@
   
          DayArray = [NSMutableArray array];
     ShowtimeArray = [NSMutableArray array];
+    urlArray = [NSMutableArray array];
     timeArray =[NSMutableArray array];
     ShowtimeArray = [json objectForKey:@"showtimesDay"];
    for(NSDictionary *item in ShowtimeArray) {
@@ -224,13 +226,46 @@
                                    NSDictionary *json  = [NSJSONSerialization JSONObjectWithData:data
                                                                                          options:kNilOptions
                                                                                            error:&error];
-                                   
-                                  NSLog(@"Response %@",json);
+                                   for(NSObject * object in json){
+                                       NSString * obj = [object valueForKey:@"ticketUrl"];
+                                       [urlArray addObject:obj];
+                                   }
+                                 
                                }
                            }
      ];
-   
+ //urlTextLabel
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    UILabel *UrlTextLabel=[[UILabel alloc] init];
+    [UrlTextLabel setFrame:CGRectMake((screenSize.width-200)/2-70, screenSize.height/2+280, 280, 60)];
+    UrlTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+    UrlTextLabel.numberOfLines = 0;
+    [UrlTextLabel setFont: [UIFont fontWithName:@"Arial" size:16.0f]];
+    UrlTextLabel.text=[urlArray firstObject];
+    UrlTextLabel.textColor =[UIColor whiteColor];
+    [self.view addSubview:UrlTextLabel];
+    
+ //urlButton
+    UIButton *UrlTextbutton =[[UIButton alloc]init];
+    UrlTextbutton.frame =UrlTextLabel.frame;
+    UrlTextbutton.titleLabel.text =UrlTextLabel.text;
+    UrlTextbutton.titleLabel.hidden =YES;
+    [UrlTextbutton addTarget:self
+     
+                      action:@selector(UrlTextbuttonClick:)
+     
+            forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:UrlTextbutton];
 
+
+}
+-(void)UrlTextbuttonClick:(id)sender{
+    
+    UIButton *btn = (UIButton *)sender;
+    
+    NSString *text =btn.titleLabel.text;
+    NSURL* url = [[NSURL alloc] initWithString:[text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 -(void)back{

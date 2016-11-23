@@ -15,7 +15,6 @@
     UIPickerView *picker;
     UIPickerView *pickertime;
     NSString *cinema_id;
-    NSDictionary *json_data;
    
 }
 
