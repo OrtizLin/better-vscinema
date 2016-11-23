@@ -20,6 +20,8 @@
         NSMutableArray *urlArray;
     NSString *MovieID;
     NSString *MovieDate;
+    NSString *intStr;
+   
 }
 
 
@@ -98,26 +100,20 @@
     subtitle.textColor =[UIColor whiteColor];
     [self.view addSubview:subtitle];
   
-         DayArray = [NSMutableArray array];
+    DayArray = [NSMutableArray array];
     ShowtimeArray = [NSMutableArray array];
     urlArray = [NSMutableArray array];
     timeArray =[NSMutableArray array];
     ShowtimeArray = [json objectForKey:@"showtimesDay"];
+    
    for(NSDictionary *item in ShowtimeArray) {
         NSString *objectforKey = [item objectForKey:@"day"];
       
         [DayArray addObject:objectforKey];
         
     }
-    
-    
-    
-
-  
-    
-
-
-    picker = [[UIPickerView alloc] initWithFrame:CGRectMake((screenSize.width-200)/2-70, screenSize.height/2+90, 320, 60)];
+    // Date PickerView
+    picker = [[UIPickerView alloc] initWithFrame:CGRectMake((screenSize.width-200)/2-70, screenSize.height/2+90, 320, 50)];
     picker.dataSource = self;
     picker.delegate = self;
     picker.backgroundColor = [UIColor whiteColor];
@@ -125,7 +121,44 @@
     picker.tag = 1;
     [self.view addSubview:picker];
     
+   
+   //urlTextLabel
     
+    UILabel *UrlTextLabel=[[UILabel alloc] init];
+    [UrlTextLabel setFrame:CGRectMake((screenSize.width-200)/2-70, screenSize.height/2+260, 300, 60)];
+    UrlTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+    UrlTextLabel.numberOfLines = 0;
+    [UrlTextLabel setFont: [UIFont fontWithName:@"Arial" size:16.0f]];
+    UrlTextLabel.textColor =[UIColor whiteColor];
+    UrlTextLabel.tag =3;
+    [self.view addSubview:UrlTextLabel];
+    
+    //urlButton
+    UIButton *UrlTextbutton =[[UIButton alloc]init];
+    UrlTextbutton.frame =UrlTextLabel.frame;
+    UrlTextbutton.titleLabel.hidden =YES;
+    [UrlTextbutton addTarget:self
+     
+                      action:@selector(UrlTextbuttonClick:)
+     
+            forControlEvents:UIControlEventTouchUpInside];
+    UrlTextbutton.tag =4;
+    [self.view addSubview:UrlTextbutton];
+    
+    //OrderButton
+    UIButton *Orderbutton =[[UIButton alloc]init];
+    [Orderbutton setFrame:CGRectMake((screenSize.width)/2-37, screenSize.height/2+220, 60, 60)];
+    [Orderbutton setTitle:NSLocalizedString(@"Order", nil) forState:UIControlStateNormal];
+    [Orderbutton addTarget:self
+     
+                    action:@selector(OrderbuttonClick:)
+     
+          forControlEvents:UIControlEventTouchUpInside];
+    Orderbutton.tag =5;
+    Orderbutton.hidden =YES;
+    [self.view addSubview:Orderbutton];
+
+  
 }
 
 - (NSInteger)numberOfComponentsInPickerView: (UIPickerView *)pickerView
@@ -136,10 +169,10 @@
 
 {
     if(pickerView.tag ==1){
-    return  DayArray.count;
+      return  DayArray.count;
     }
     else{
-        return timeArray.count;
+      return timeArray.count;
     }
     
 }
@@ -157,112 +190,90 @@
 }
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-   CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    if(pickerView.tag==1){
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+if(pickerView.tag==1){
+    [timeArray removeAllObjects];
+    [urlArray removeAllObjects];
     MovieDate = [ShowtimeArray[row] objectForKey:@"day"];
-    timeArray = [ShowtimeArray[row] objectForKey:@"sessions"];
+        //        URL: https://vieshow-showtime.herokuapp.com/ticket
+        //        cinemaId
+        //        movieId
+        //        ticketDate
+        
+        NSURL *url =[NSURL URLWithString:@"https://vieshow-showtime.herokuapp.com/ticket"];
+        NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                  cinema_id, @"cinemaId",
+                                  MovieID, @"movieId",
+                                  MovieDate, @"ticketDate",
+                                  nil];
+        
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDict options:0 error:&error];
+        NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
+        [request setHTTPMethod:@"POST"];
+        [request setValue: @"application/json" forHTTPHeaderField: @"Accept"];
+        [request setValue: @"application/json; charset=utf-8" forHTTPHeaderField: @"content-type"];
+        [request setHTTPBody: jsonData];
+        
+        
+        
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSDictionary *json  = [NSJSONSerialization JSONObjectWithData:data
+                                                          options:kNilOptions
+                                                            error:&error];
+        for(NSObject * object in json){
+            NSString * session = [object valueForKey:@"session"];
+            NSString * url = [object valueForKey:@"ticketUrl"];
+            [timeArray addObject:session];
+            [urlArray addObject:url];
+         }
 
-        
-        pickertime =[[UIPickerView alloc]initWithFrame:CGRectMake((screenSize.width-200)/2-70, screenSize.height/2+180, 320, 60)];
-        pickertime.dataSource = self;
-        pickertime.delegate = self;
-        pickertime.backgroundColor = [UIColor whiteColor];
-        pickertime.showsSelectionIndicator = YES;
-        pickertime.hidden = NO;
-        pickertime.tag = 2;
-        [self.view addSubview:pickertime];
-        
+
+    
+    // Time PickerView
+    pickertime =[[UIPickerView alloc]initWithFrame:CGRectMake((screenSize.width-200)/2-70, screenSize.height/2+180, 320, 50)];
+    pickertime.dataSource = self;
+    pickertime.delegate = self;
+    pickertime.backgroundColor = [UIColor whiteColor];
+    pickertime.showsSelectionIndicator = YES;
+    pickertime.hidden = NO;
+    pickertime.tag = 2;
+    [self.view addSubview:pickertime];
+    
+    
 
     }
     else{
-       
-        UIButton *Orderbutton =[[UIButton alloc]init];
-        [Orderbutton setFrame:CGRectMake((screenSize.width)/2-40, screenSize.height/2+240, 60, 60)];
-        [Orderbutton setTitle:NSLocalizedString(@"Order", nil) forState:UIControlStateNormal];
-        [Orderbutton addTarget:self
-         
-                          action:@selector(OrderbuttonClick:)
-         
-                forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:Orderbutton];
         
-
-    }
+        UIButton *orderButton =(UIButton *)[self.view viewWithTag:5];
+        orderButton.hidden =NO;
+        
+        NSString *rowstr = [NSString stringWithFormat: @"%ld", (long)row];
+        intStr =rowstr;
+        
+        }
 }
 -(void)OrderbuttonClick:(id)sender{
-    //        URL: https://vieshow-showtime.herokuapp.com/ticket
-    //        cinemaId
-    //        movieId
-    //        ticketDate
-   
-    NSURL *url =[NSURL URLWithString:@"https://vieshow-showtime.herokuapp.com/ticket"];
-    NSDictionary *jsonDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                              cinema_id, @"cinemaId",
-                              MovieID, @"movieId",
-                              MovieDate, @"ticketDate",
-                              nil];
+  
     
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDict options:0 error:&error];
-    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [request setHTTPMethod:@"POST"];
-    [request setValue: @"application/json" forHTTPHeaderField: @"Accept"];
-    [request setValue: @"application/json; charset=utf-8" forHTTPHeaderField: @"content-type"];
-    [request setHTTPBody: jsonData];
-
-   
-   
-
+  
+    int myInt = [intStr intValue];
     
-    [NSURLConnection sendAsynchronousRequest: request
-                                       queue: queue
-                           completionHandler: ^(NSURLResponse *response, NSData *data, NSError *error) {
-                               if (error || !data) {
-                                   // Handle the error
-                               } else {
-                                   // Handle the success
-                                   
-                                   NSDictionary *json  = [NSJSONSerialization JSONObjectWithData:data
-                                                                                         options:kNilOptions
-                                                                                           error:&error];
-                                   for(NSObject * object in json){
-                                       NSString * obj = [object valueForKey:@"ticketUrl"];
-                                       [urlArray addObject:obj];
-                                   }
-                                 
-                               }
-                           }
-     ];
- //urlTextLabel
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    UILabel *UrlTextLabel=[[UILabel alloc] init];
-    [UrlTextLabel setFrame:CGRectMake((screenSize.width-200)/2-70, screenSize.height/2+280, 280, 60)];
-    UrlTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-    UrlTextLabel.numberOfLines = 0;
-    [UrlTextLabel setFont: [UIFont fontWithName:@"Arial" size:16.0f]];
-    UrlTextLabel.text=[urlArray firstObject];
-    UrlTextLabel.textColor =[UIColor whiteColor];
-    [self.view addSubview:UrlTextLabel];
+    UILabel *UrlTextLabel = (UILabel*)[self.view viewWithTag:3];
+    UrlTextLabel.text=[urlArray objectAtIndex:myInt];
     
- //urlButton
-    UIButton *UrlTextbutton =[[UIButton alloc]init];
-    UrlTextbutton.frame =UrlTextLabel.frame;
+    
+  
+    
+    UIButton *UrlTextbutton = (UIButton*)[self.view viewWithTag:4];
     UrlTextbutton.titleLabel.text =UrlTextLabel.text;
-    UrlTextbutton.titleLabel.hidden =YES;
-    [UrlTextbutton addTarget:self
-     
-                      action:@selector(UrlTextbuttonClick:)
-     
-            forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:UrlTextbutton];
+   
 
 
 }
 -(void)UrlTextbuttonClick:(id)sender{
     
     UIButton *btn = (UIButton *)sender;
-    
     NSString *text =btn.titleLabel.text;
     NSURL* url = [[NSURL alloc] initWithString:[text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [[UIApplication sharedApplication] openURL:url];
