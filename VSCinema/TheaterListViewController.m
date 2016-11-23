@@ -81,7 +81,7 @@
 
 //Set Background Image.
     
-    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpeg"]];
     [tempImageView setFrame:dyTableView.frame];
     dyTableView.backgroundView = tempImageView;
    
