@@ -63,7 +63,7 @@
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     NSURL *imageUrl = [NSURL URLWithString:[secondArray objectForKey:@"link"]];
     UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:imageUrl]];
-    UIImageView *imageview =[[UIImageView alloc]initWithFrame:CGRectMake((screenSize.width-150)/2, screenSize.height/5, 150.0f, 150.0f)];
+    UIImageView *imageview =[[UIImageView alloc]initWithFrame:CGRectMake(0, screenSize.height/6-25, screenSize.width, 270.0f)];
     imageview.image=image;
     [self.view addSubview:imageview];
   
@@ -82,19 +82,19 @@
     
 // Title.
     UILabel *title=[[UILabel alloc] init];
-    [title setFrame:CGRectMake((screenSize.width-200)/2-40, screenSize.height/2+30, 320, 20)];
+    [title setFrame:CGRectMake(10, screenSize.height/2+35, 360, 20)];
     title.lineBreakMode = UILineBreakModeWordWrap;
     title.numberOfLines = 0;
-    [title setFont: [UIFont fontWithName:@"Arial" size:16.0f]];
+    [title setFont: [UIFont fontWithName:@"Arial" size:20.0f]];
     title.text=[json objectForKey:@"text"];
     title.textColor =[UIColor whiteColor];
     [self.view addSubview:title];
 // Address
     UILabel *address=[[UILabel alloc] init];
-    [address setFrame:CGRectMake((screenSize.width-200)/2-40, screenSize.height/2+60, 320, 20)];
+    [address setFrame:CGRectMake(10, screenSize.height/2+75, 320, 20)];
     address.lineBreakMode = UILineBreakModeWordWrap;
     address.numberOfLines = 0;
-    [address setFont: [UIFont fontWithName:@"Arial" size:13.0f]];
+    [address setFont: [UIFont fontWithName:@"Arial" size:17.0f]];
     address.text=[json objectForKey:@"address"];
     address.textColor =[UIColor whiteColor];
     [self.view addSubview:address];
@@ -113,10 +113,10 @@
 
 // tel
     UILabel *tel=[[UILabel alloc] init];
-    [tel setFrame:CGRectMake((screenSize.width-200)/2-40, screenSize.height/2+90, 320, 20)];
+    [tel setFrame:CGRectMake(10, screenSize.height/2+105, 320, 20)];
     tel.lineBreakMode = UILineBreakModeWordWrap;
     tel.numberOfLines = 0;
-    [tel setFont: [UIFont fontWithName:@"Arial" size:13.0f]];
+    [tel setFont: [UIFont fontWithName:@"Arial" size:17.0f]];
     tel.text=[json objectForKey:@"tel"];
     tel.textColor =[UIColor whiteColor];
     [self.view addSubview:tel];

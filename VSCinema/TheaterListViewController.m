@@ -42,20 +42,21 @@
 
 -(void)loadView{
   
-     CGFloat screenHeight =[UIScreen mainScreen].bounds.size.height;
+    CGFloat screenHeight =[UIScreen mainScreen].bounds.size.height;
     CGFloat screenWeight =[UIScreen mainScreen].bounds.size.width;
     UIView *container = [[UIView alloc]initWithFrame:CGRectMake(0, 50, screenWeight, screenHeight)];
     self.view = container;
     UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-    
+    [navBar setBarTintColor:[UIColor lightGrayColor]];
+    [navBar setTranslucent:NO];
     
     UINavigationItem *navItem = [[UINavigationItem alloc] init];
-    navItem.title = NSLocalizedString(@"Theater Info",nil);
+ 
+    
     
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back",nil) style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     navItem.leftBarButtonItem = leftButton;
-    navItem.leftBarButtonItem.tintColor =[UIColor blackColor];
-    
+    navItem.leftBarButtonItem.tintColor =[UIColor whiteColor];
     
     
     navBar.items = @[ navItem ];
@@ -77,6 +78,12 @@
     
     dyTableView.delegate = self;
     
+
+//Set Background Image.
+    
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
+    [tempImageView setFrame:dyTableView.frame];
+    dyTableView.backgroundView = tempImageView;
    
     [self.view addSubview:dyTableView];
     
@@ -141,8 +148,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-  
-    
+ 
     TheaterDetailViewController *detailview = [TheaterDetailViewController alloc];
     detailview.TheaterInfo = dyItems[indexPath.row];
     [self presentViewController:detailview animated:false completion:nil];;
@@ -164,7 +170,7 @@
 
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ThDataCell" forIndexPath: indexPath];
-
+    
     NSEnumerator * enumeratorKey = [json keyEnumerator];
     
     for (NSObject *object in enumeratorKey) {
@@ -173,19 +179,17 @@
         NSString *valueforKey = [objectforKey valueForKey:@"text"];
         [title addObject:valueforKey];
     }
-
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.text = title[indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.adjustsFontSizeToFitWidth = TRUE;
-   
-     [self configurePhotoForCell:cell];
+
     
     return cell;
 
 }
-- (void)configurePhotoForCell:(UITableViewCell *)cell
-{
-   cell.imageView.image = [UIImage imageNamed:@"conference"];
-}
+
 
 
 @end

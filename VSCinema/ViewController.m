@@ -19,30 +19,59 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
    
-
-//theater label
-    UILabel *TheaterLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 50, 200, 40)];
-    TheaterLabel.text =NSLocalizedString(@"Theater Info", nil);
-    TheaterLabel.textColor = [UIColor blueColor];
-    [self.view addSubview:TheaterLabel];
+   // self.view.backgroundColor = [UIColor lightGrayColor];
     
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
+    [self.view.layer insertSublayer:gradient atIndex:0];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    
+//Title label
+    UILabel *titleLabel = [[UILabel alloc]init];
+    [titleLabel setFrame:CGRectMake(screenSize.width/2-145,50, 280, 40)];
+    [titleLabel setFont:[UIFont fontWithName:@"BodoniSvtyTwoOSITCTT-Book" size:40]];
+    titleLabel.text = @"威秀影城時刻表";
+    titleLabel.textColor = [UIColor darkGrayColor];
+    [self.view addSubview:titleLabel];
+    
+//Subtitle label
+    UILabel *subtitleLabel = [[UILabel alloc]init];
+    [subtitleLabel setFrame:CGRectMake(titleLabel.frame.origin.x,90, 250, 40)];
+    [subtitleLabel setFont:[UIFont fontWithName:@"BodoniSvtyTwoOSITCTT-Book" size:15]];
+    subtitleLabel.text = @"iOS version , Developed by Otis.";
+    subtitleLabel.textColor = [UIColor darkGrayColor];
+    [self.view addSubview:subtitleLabel];
+    
+//TheaterInfo button
+
+   
     UIButton *TheaterBtn =[[UIButton alloc]init];
-    TheaterBtn.frame =TheaterLabel.frame;
+    TheaterBtn.layer.cornerRadius = 5.0;
+    TheaterBtn.layer.borderWidth = 2.0;
+    TheaterBtn.layer.borderColor =[UIColor grayColor].CGColor;
+    [TheaterBtn setFrame:CGRectMake(screenSize.width/2-100, screenSize.height-150, 200, 40)];
+    [TheaterBtn setFont:[UIFont fontWithName:@"BodoniSvtyTwoOSITCTT-Book" size:17]];
+    [TheaterBtn setTitle:NSLocalizedString(@"Theater Index", nil) forState:UIControlStateNormal];
     [TheaterBtn addTarget:self
      
                   action:@selector(TheaterBtnClick:)
      
     forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:TheaterBtn];
+    
+   
+  
+//MovieInfo button
 
-//movie label
-    UILabel *MovieLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 150, 200, 40)];
-    MovieLabel.text =NSLocalizedString(@"Movie Info", nil);
-    MovieLabel.textColor = [UIColor blueColor];
-    [self.view addSubview:MovieLabel];
     
     UIButton *MovieBtn =[[UIButton alloc]init];
-    MovieBtn.frame =MovieLabel.frame;
+    MovieBtn.layer.cornerRadius = 5.0;
+    MovieBtn.layer.borderWidth = 2.0;
+    MovieBtn.layer.borderColor =[UIColor grayColor].CGColor;
+    [MovieBtn setFrame:CGRectMake(screenSize.width/2-100, screenSize.height-100, 200, 40)];
+    [MovieBtn setFont:[UIFont fontWithName:@"BodoniSvtyTwoOSITCTT-Book" size:17]];
+    [MovieBtn setTitle:NSLocalizedString(@"Movie Index", nil) forState:UIControlStateNormal];
     [MovieBtn addTarget:self
      
                    action:@selector(MovieBtnClick:)

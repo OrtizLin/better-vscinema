@@ -7,6 +7,6 @@
 */
 "Back" = "返回";
 "Select theater" = "選擇戲院";
-"Theater Info" = "戲院資訊";
-"Movie Info" = "電影資訊";
+"Theater Index" = "戲院列表";
+"Movie Index" = "電影列表";
 "Order" = "訂票";
