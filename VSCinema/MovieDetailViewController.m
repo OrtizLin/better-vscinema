@@ -194,6 +194,8 @@
 if(pickerView.tag==1){
     [timeArray removeAllObjects];
     [urlArray removeAllObjects];
+    UIButton *orderButton =(UIButton *)[self.view viewWithTag:5];
+    orderButton.hidden =YES;
     MovieDate = [ShowtimeArray[row] objectForKey:@"day"];
         //        URL: https://vieshow-showtime.herokuapp.com/ticket
         //        cinemaId
@@ -244,13 +246,16 @@ if(pickerView.tag==1){
 
     }
     else{
-        
+        if([timeArray count] > 0){
         UIButton *orderButton =(UIButton *)[self.view viewWithTag:5];
         orderButton.hidden =NO;
         
         NSString *rowstr = [NSString stringWithFormat: @"%ld", (long)row];
         intStr =rowstr;
-        
+        }
+        else{
+            NSLog(@"this is empty array %@",timeArray);
+        }
         }
 }
 -(void)OrderbuttonClick:(id)sender{
