@@ -80,11 +80,32 @@
          forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:MovieBtn];
     
-
+    
+//Lottie button
+    
+    
+    UIButton *LottieBtn =[[UIButton alloc]init];
+    LottieBtn.layer.cornerRadius = 5.0;
+    LottieBtn.layer.borderWidth = 2.0;
+    LottieBtn.layer.borderColor =[UIColor grayColor].CGColor;
+    [LottieBtn setFrame:CGRectMake(screenSize.width/2-100, screenSize.height-50, 200, 40)];
+    [LottieBtn setFont:[UIFont fontWithName:@"BodoniSvtyTwoOSITCTT-Book" size:17]];
+    [LottieBtn setTitle:NSLocalizedString(@"Lottie", nil) forState:UIControlStateNormal];
+    [LottieBtn addTarget:self
+     
+                 action:@selector(LottieBtnClick)
+     
+       forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:LottieBtn];
+    
     
 }
+-(void)LottieBtnClick{
+    TestViewController *testView = [TestViewController alloc];
+    [self presentViewController:testView animated:true completion:nil];;
+}
 -(IBAction)TheaterBtnClick:(id)sender{
-     TestViewController *TheaterView = [TestViewController alloc];
+    TheaterListViewController *TheaterView = [TheaterListViewController alloc];
     [self presentViewController:TheaterView animated:true completion:nil];;
 }
 -(IBAction)MovieBtnClick:(id)sender{
