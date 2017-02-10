@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "TheaterListViewController.h"
 #import "MovieViewController.h"
+#import "TestViewController.h"
 @interface ViewController ()
 
 @end
@@ -83,7 +84,7 @@
     
 }
 -(IBAction)TheaterBtnClick:(id)sender{
-     TheaterListViewController *TheaterView = [TheaterListViewController alloc];
+     TestViewController *TheaterView = [TestViewController alloc];
     [self presentViewController:TheaterView animated:true completion:nil];;
 }
 -(IBAction)MovieBtnClick:(id)sender{
